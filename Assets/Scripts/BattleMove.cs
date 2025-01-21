@@ -9,6 +9,13 @@ public class BattleMove : BattleAction
     public bool IsHit { get { return isHit; } }
     private Move move;
 
+    public virtual void SetAction(Player _active, Player _target, Move _move)
+    {
+        activePlayer = _active;
+        targetPlayer = _target;
+        move = _move;
+    }
+
     public override void ApplyAction()
     {
         if (isHit)

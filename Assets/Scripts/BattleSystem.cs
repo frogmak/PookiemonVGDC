@@ -53,7 +53,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(setUpBattleTime);
 
-        currentState = BattleState.P1TURN;
+        currentState = BattleState.START;
         NextPhase();
     }
 
@@ -85,10 +85,12 @@ public class BattleSystem : MonoBehaviour
             case BattleState.START:
                 currentState = BattleState.P1TURN;
                 currentPlayer = player1;
+                Player1Turn();
                 break;
             case BattleState.P1TURN:
                 currentState = BattleState.P2TURN;
                 currentPlayer = player2;
+                Player2Turn();
                 break;
             case BattleState.P2TURN:
                 currentPlayer = null;
@@ -165,7 +167,15 @@ public class BattleSystem : MonoBehaviour
 
     public void OnMoveSelected(Move move)
     {
-        // check for hit in here
-        // we do something with that info
+        BattleMove action = new BattleMove();
+        action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, move);
+    }
+
+    //Called by the switch in button
+    public void OnPookiemonSwitched(Pookiemon p)
+    {
+        BattleSwitchAction action = new BattleSwitchAction();
+        action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, p);
+        currentPlayer.currentMove = action;
     }
 }
