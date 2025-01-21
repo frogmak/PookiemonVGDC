@@ -44,13 +44,30 @@ public class BattleSim : MonoBehaviour
             PlayerMove(playerOneActive);
             PlayerMove(playerTwoActive);
             BattlePhase();
-            TurnUpKeep();
+            TurnEndStep();
         }
     }
 
-    private void PlayerMove(Pookiemon player)
+    private void PlayerMove(Pookiemon player) // evaluates a player's move
     {
 
+    }
+
+    public void OnBack() // goes back to the battle menu
+    {
+        //return to battle menu
+    }
+
+    public void OnRun(Pookiemon player)
+    {
+        Debug.Log("Can't run, bozo!");
+        PlayerMove(player);
+    }
+
+    public void OnBag(Pookiemon player)
+    {
+        Debug.Log("You a broke af!");
+        PlayerMove(player);
     }
 
     private void BattlePhase()
@@ -58,9 +75,10 @@ public class BattleSim : MonoBehaviour
 
     }
 
-    private void TurnUpKeep()
+    private void TurnEndStep() // Events that occure after the battle phase has ended, before the start of a new turn
     {
-        if (CheckTeamIsDead(teamOne) ||  CheckTeamIsDead(teamTwo)) // First check to see if teams are alive. End the game if not
+        FieldEffect(); // Updates any field effects
+        if (CheckTeamIsDead(teamOne) ||  CheckTeamIsDead(teamTwo)) // Then check to see if teams are alive. End the game if a team is dead
         {
             if (playerOneIsDead)
             {
@@ -71,10 +89,10 @@ public class BattleSim : MonoBehaviour
             }
             EndBattle();
         }
-        FieldEffect(); // Updates any field effects
+        
     }
 
-    private bool CheckTeamIsDead(List<Pookiemon> playerTeam)
+    private bool CheckTeamIsDead(List<Pookiemon> playerTeam) // checks a players team to see if it is completely knocked out
     {
         foreach (Pookiemon p in playerTeam)
         {
@@ -98,7 +116,7 @@ public class BattleSim : MonoBehaviour
 
     }
 
-    private void EndBattle()
+    private void EndBattle() // end ab ttle
     {
         battleHasEnded = true;
     }
