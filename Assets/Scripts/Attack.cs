@@ -14,24 +14,35 @@ public class Attack : Move
     [SerializeField] private AttackType damageType;
     //Moves base damage amount
     [SerializeField] protected int power;
-    [SerializeField] Pookiemon user;
+    [Range(0,100)]public int critChance;
+
     public int POWER { get { return power; } }
 
-    public override void UseMove(Pookiemon target)
+    public override bool UseMove(Pookiemon target)
     {
-        if(damageType == AttackType.Physical)
+        bool occured = base.UseMove(target);
+
+        if(!occured)
         {
-            target.TakePhysicalDamage(user, this);
+            return false;
+        }
+
+        int damageDealt = 0;
+
+        if (damageType == AttackType.Physical)
+        {
+            damageDealt = target.TakePhysicalDamage(user, this);
         }
         else
         {
-            target.TakeSpecialDamage(user, this);
+            damageDealt = target.TakeSpecialDamage(user, this);
         }
-        ExtraEffects(target);
+        ExtraEffects(target, damageDealt);
+        return true;
     }
 
     //Override this method!
-    protected virtual void ExtraEffects(Pookiemon target)
+    protected virtual void ExtraEffects(Pookiemon target, int damageDealt)
     {
 
     }
