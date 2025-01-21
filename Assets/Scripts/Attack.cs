@@ -14,6 +14,7 @@ public class Attack : Move
     [SerializeField] private AttackType damageType;
     //Moves base damage amount
     [SerializeField] protected int power;
+    [Range(0,100)]public int critChance;
 
     public int POWER { get { return power; } }
 
@@ -26,20 +27,22 @@ public class Attack : Move
             return false;
         }
 
-        if(damageType == AttackType.Physical)
+        int damageDealt = 0;
+
+        if (damageType == AttackType.Physical)
         {
-            target.TakePhysicalDamage(user, this);
+            damageDealt = target.TakePhysicalDamage(user, this);
         }
         else
         {
-            target.TakeSpecialDamage(user, this);
+            damageDealt = target.TakeSpecialDamage(user, this);
         }
-        ExtraEffects(target);
+        ExtraEffects(target, damageDealt);
         return true;
     }
 
     //Override this method!
-    protected virtual void ExtraEffects(Pookiemon target)
+    protected virtual void ExtraEffects(Pookiemon target, int damageDealt)
     {
 
     }

@@ -147,9 +147,11 @@ public class Pookiemon : MonoBehaviour
     {
         //Super Effectiveness
         float multiplier = GetMultiplier(attack.type, type1, type2);
+        //Crit
+        if(RollCrit(attack)) { multiplier *= 1.5f; }
         //STAB
         if(attack.type == type1 || attack.type == type2) { multiplier *= 1.5f; }
-        int damage = (int)(multiplier * (2*LEVEL/5 +2) * attack.POWER * stats[Stats.ATTACK] / attacker.stats[Stats.DEFENSE]);
+        int damage = (int)(multiplier * (2*LEVEL/5 +2) * attack.POWER * GetStat(Stats.ATTACK) / attacker.GetStat(Stats.DEFENSE));
         int healthLost = Mathf.Clamp(damage, currentHealth, damage);
         currentHealth -= damage;
         return healthLost;
@@ -159,11 +161,20 @@ public class Pookiemon : MonoBehaviour
     {
         //Super Effectiveness
         float multiplier = GetMultiplier(attack.type, type1, type2);
+        //Crit
+        if (RollCrit(attack)) { multiplier *= 1.5f; }
         //STAB
         if (attack.type == type1 || attack.type == type2) { multiplier *= 1.5f; }
-        int damage = (int)(multiplier * (2 * LEVEL / 5 + 2) * attack.POWER * stats[Stats.SPATTACK] / attacker.stats[Stats.SPDEFENSE]);
+        int damage = (int)(multiplier * (2 * LEVEL / 5 + 2) * attack.POWER * GetStat(Stats.SPATTACK) / attacker.GetStat(Stats.SPDEFENSE));
         int healthLost = Mathf.Clamp(damage, currentHealth, damage);
         currentHealth -= damage;
         return healthLost;
+    }
+
+    private bool RollCrit(Attack a)
+    {
+        int roll = UnityEngine.Random.Range(1, 100);
+        return roll * a.critChance > 100;
+
     }
 }
