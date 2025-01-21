@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] string moveName;
+    public string moveName;
     [SerializeField] [Range(0,100)] int accuracy;
     [SerializeField] protected Pookiemon user;
     public Types type;
@@ -18,21 +18,21 @@ public class Move : MonoBehaviour
         currentPP = movePP;
     }
 
-    //Returns if move worked or not
-    public virtual bool UseMove(Pookiemon target) {
+    // applys the move
+    public virtual void UseMove(Pookiemon target) 
+    {
         currentPP--;
-        if(currentPP < 0)
+    }
+
+    // checks if the move is a hit or miss
+    public bool AttemptMove()
+    {
+        if (currentPP - 1 <= 0)
         {
             return false;
         }
-        if(!AttemptMove()) { return false; }
-        return true;
-    }
 
-    private bool AttemptMove()
-    {
         int roll = UnityEngine.Random.Range(0,100);
         return (roll * user.GetAccuracy() < accuracy);
     }
-
 }

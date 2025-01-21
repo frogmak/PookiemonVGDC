@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthUI : MonoBehaviour
+{
+    private const string levelLabel = "Lv.";
+
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private Slider healthbar;
+    [SerializeField] private TMP_Text healthText;
+
+    public void Init(Pookiemon pookie)
+    {
+        nameText.text = pookie.pookiemonName;
+        levelText.text = $"{levelLabel}{Pookiemon.LEVEL}";
+
+        healthbar.maxValue = pookie.GetStat(Stats.HP);
+        healthbar.minValue = 0;
+        healthbar.value = pookie.CurrentHealth;
+
+        healthText.text = $"{healthbar.value}/{healthbar.maxValue}";
+    }
+
+    public void SetHealth(int currentHealth)
+    {
+        healthbar.value = currentHealth;
+        healthText.text = $"{currentHealth}/{healthbar.maxValue}";
+    }
+}

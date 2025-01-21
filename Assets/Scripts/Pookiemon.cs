@@ -47,17 +47,19 @@ public class Pookiemon : MonoBehaviour
 };
 
 
-
+    public string pookiemonName = "";
+    public Sprite sprite; 
     [SerializeField] StatMap baseStats;
     StatMap stats = new StatMap();
     StatMap statChanges = new StatMap();
-    static int LEVEL = 50;
+    public static int LEVEL = 50;
     [SerializeField] Types type1;
     [SerializeField] Types type2;
     [SerializeField] List<Move> moves;
     public float accuracyStage = 0;
     public bool IsDead { get { return currentHealth <= 0; } }
     private int currentHealth;
+    public int CurrentHealth { get { return currentHealth; } }
 
     public static float GetMultiplier(Types attackType, Types defend1, Types defender2)
     {

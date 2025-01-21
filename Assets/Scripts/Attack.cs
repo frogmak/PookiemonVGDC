@@ -18,14 +18,9 @@ public class Attack : Move
 
     public int POWER { get { return power; } }
 
-    public override bool UseMove(Pookiemon target)
+    public override void UseMove(Pookiemon target)
     {
-        bool occured = base.UseMove(target);
-
-        if(!occured)
-        {
-            return false;
-        }
+        base.UseMove(target);
 
         int damageDealt = 0;
 
@@ -38,7 +33,6 @@ public class Attack : Move
             damageDealt = target.TakeSpecialDamage(user, this);
         }
         ExtraEffects(target, damageDealt);
-        return true;
     }
 
     //Override this method!
