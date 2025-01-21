@@ -14,11 +14,18 @@ public class Attack : Move
     [SerializeField] private AttackType damageType;
     //Moves base damage amount
     [SerializeField] protected int power;
-    [SerializeField] Pookiemon user;
+
     public int POWER { get { return power; } }
 
-    public override void UseMove(Pookiemon target)
+    public override bool UseMove(Pookiemon target)
     {
+        bool occured = base.UseMove(target);
+
+        if(!occured)
+        {
+            return false;
+        }
+
         if(damageType == AttackType.Physical)
         {
             target.TakePhysicalDamage(user, this);
@@ -28,6 +35,7 @@ public class Attack : Move
             target.TakeSpecialDamage(user, this);
         }
         ExtraEffects(target);
+        return true;
     }
 
     //Override this method!

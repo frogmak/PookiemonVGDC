@@ -5,7 +5,6 @@ using UnityEngine;
 
 [Serializable]
 public class StatMap : SerializableDictionary<Stats, int> { }
-public class StatRaiseMap : SerializableDictionary<Stats, float> { }
 public enum Stats
 {
     HP,
@@ -51,12 +50,13 @@ public class Pookiemon : MonoBehaviour
 
     [SerializeField] StatMap baseStats;
     StatMap stats = new StatMap();
-    [SerializeField] StatRaiseMap statRaises;
+    StatMap statChanges = new StatMap();
     static int LEVEL = 50;
     [SerializeField] Types type1;
     [SerializeField] Types type2;
     [SerializeField] List<Move> moves;
-
+    public float accuracyStage = 0;
+    public bool IsDead { get { return currentHealth <= 0; } }
     private int currentHealth;
 
     public static float GetMultiplier(Types attackType, Types defend1, Types defender2)
@@ -75,7 +75,33 @@ public class Pookiemon : MonoBehaviour
 
     public int GetStat(Stats stat)
     {
-        return stats[stat];
+        int num = 2;
+        int denom = 2;
+        if (statChanges[stat] > 0)
+        {
+            num += 1;
+        }
+        else
+        {
+            denom += 1;
+        }
+
+        return (int)(stats[stat] * num/denom);
+    }
+
+    public float GetAccuracy()
+    {
+        int num = 3;
+        int denom = 3;
+        if(accuracyStage > 0)
+        {
+            num += 1;
+        }
+        else
+        {
+            denom += 1;
+        }
+        return num / denom;
     }
 
 
@@ -87,15 +113,34 @@ public class Pookiemon : MonoBehaviour
             stats[s] = LEVEL * ((baseStats[s] / 50) + 5);
         }
         currentHealth = baseStats[Stats.HP];
+        for(int i = 0; i < 6; i++)
+        {
+            statChanges.Add(i, 0);
+        }
+    }
 
+    public void OnSwitch()
+    {
+        ResetChanges();
     }
 
     protected void ResetChanges()
     {
         for (int i = 0; i < 6; i++)
         {
-            statRaises[i] = 1;
+            statChanges[i] = 0;
         }
+        accuracyStage = 0;
+    }
+
+    public void ApplyStatChange(Stats stat, int stageRaise)
+    {
+        statChanges[stat] = Mathf.Clamp(statChanges[stat] + stageRaise, -6, 6);
+    }
+
+    public void ApplyAccuracyChange(int stageRaise)
+    {
+        accuracyStage = Mathf.Clamp(accuracyStage + stageRaise, -6, 6);
     }
 
     public int TakePhysicalDamage(Pookiemon attacker, Attack attack)
