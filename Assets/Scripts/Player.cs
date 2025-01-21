@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [Header("UI")]
     [SerializeField] private HealthUI healthUI;
 
+    public BattleAction currentMove;
+
     private void Awake()
     {
         team = new List<Pookiemon>();
@@ -37,4 +39,11 @@ public class Player : MonoBehaviour
     }
 
     // switch pookie method here
+
+    public void SwitchPookie(Pookiemon pookiemon)
+    {
+        currentPookiemon.gameObject.SetActive(false);
+        currentPookiemon = pookiemon;
+        currentPookiemon.gameObject.SetActive(true);
+    }
 }
