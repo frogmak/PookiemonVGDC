@@ -17,7 +17,7 @@ public class Attack : Move
     [SerializeField] Pookiemon user;
     public int POWER { get { return power; } }
 
-    public void UseMove(Pookiemon target)
+    public override void UseMove(Pookiemon target)
     {
         if(damageType == AttackType.Physical)
         {
