@@ -95,10 +95,12 @@ public class BattleSystem : MonoBehaviour
             case BattleState.P2TURN:
                 currentPlayer = null;
                 currentState = BattleState.BATTLE;
+                SetUpBattle();
                 break;
             case BattleState.BATTLE:
                 currentPlayer = null;
                 currentState = BattleState.P1TURN;
+                Player1Turn();
                 break;
         }
     }
@@ -168,7 +170,10 @@ public class BattleSystem : MonoBehaviour
     public void OnMoveSelected(Move move)
     {
         BattleMove action = new BattleMove();
-        action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, move);
+        bool hit = move.AttemptMove();
+        action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, move, hit);
+        currentPlayer.currentMove = action;
+        NextPhase();
     }
 
     //Called by the switch in button
@@ -177,5 +182,6 @@ public class BattleSystem : MonoBehaviour
         BattleSwitchAction action = new BattleSwitchAction();
         action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, p);
         currentPlayer.currentMove = action;
+        NextPhase();
     }
 }
