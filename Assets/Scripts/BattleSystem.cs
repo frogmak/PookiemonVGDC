@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BattleState { START, P1TURN, P2TURN, BATTLE}
+public enum BattleState { START, P1TURN, P2TURN, BATTLE, P1SWITCH, P2SWITCH}
 
 public class BattleSystem : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class BattleSystem : MonoBehaviour
 
     private BattleState currentState;
     private Queue<BattleAction> battleNarration;
+
+    public static event Action TurnStart;
+    public static event Action TurnEnd;
 
     private void Awake()
     {
@@ -75,13 +79,15 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator BeginBattle(List<BattleAction> actions)
     {
+        TurnStart?.Invoke();
         actions[0].ApplyAction();
         playerHUD.ShowNarration(actions[0].NarrationLine, true);
         yield return new WaitForSeconds(setUpBattleTime);
         actions[1].ApplyAction();
         playerHUD.ShowNarration(actions[1].NarrationLine);
+        TurnEnd?.Invoke();
         yield return new WaitForSeconds(setUpBattleTime);
-        NextPhase();
+        if (!CheckGameOver()) { NextPhase(); }
         yield return null;
     }
 
@@ -105,15 +111,39 @@ public class BattleSystem : MonoBehaviour
                 SetUpBattle();
                 break;
             case BattleState.BATTLE:
-                currentPlayer = null;
+                currentPlayer = player1;
+                currentState = BattleState.P1SWITCH;
+                if (player1.Pookiemon.IsDead)
+                {
+                    OnPookiemonSelect();
+                }
+                else
+                {
+                    NextPhase();
+                }
+                break;
+            case BattleState.P1SWITCH:
+                currentPlayer = player2;
+                currentState = BattleState.P2SWITCH;
+                if (player2.Pookiemon.IsDead)
+                {
+                    OnPookiemonSelect();
+                }
+                else
+                {
+                    NextPhase();
+                }
+                break;
+            case BattleState.P2SWITCH:
                 currentState = BattleState.P1TURN;
+                currentPlayer = player1;
                 Player1Turn();
                 break;
         }
     }
 
     // called after the battle is over
-    private void CheckGameOver()
+    private bool CheckGameOver()
     {
         bool teamOneDead = CheckTeamIsDead(player1.Team);
         bool teamTwoDead = CheckTeamIsDead(player2.Team);
@@ -121,15 +151,19 @@ public class BattleSystem : MonoBehaviour
         if (teamOneDead && teamTwoDead) // tie state
         {
             playerHUD.ShowNarration("All Pookiemon have fainted. It's a tie!");
+            return true;
         }
         else if (teamOneDead)
         {
             playerHUD.ShowNarration("Player 1 defeated. Player 2 wins!");
+            return true;
         }
         else if (teamTwoDead)
         {
             playerHUD.ShowNarration("Player 2 defeated. Player 1 wins!");
+            return true;
         }
+        return false;
     }
 
     // checks a players team to see if it is completely knocked out
@@ -165,7 +199,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnPookiemonSelect()
     {
-        if (currentState != BattleState.P1TURN && currentState != BattleState.P2TURN)
+        if (currentState == BattleState.START || currentState == BattleState.BATTLE)
             return;
 
         playerHUD.ShowPookiemonSelect(currentPlayer.Team);
