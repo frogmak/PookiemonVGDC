@@ -15,7 +15,7 @@ public class BattleSystem : MonoBehaviour
     public Player CurrentPlayer { get { return currentPlayer; } }
 
     [Header("UI")]
-    [SerializeField] private PlayerHUD playerHUD;
+    [SerializeField] private HUD playerHUD;
 
     [Header("Timing Configurations")]
     // timing parameters

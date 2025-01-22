@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerHUD : MonoBehaviour
+public class HUD : MonoBehaviour
 {
-    public static PlayerHUD instance;
+    public static HUD instance;
 
     [Header("Narration")]
     [SerializeField] private GameObject narrationUI;

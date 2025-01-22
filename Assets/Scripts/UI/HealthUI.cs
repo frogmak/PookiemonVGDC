@@ -20,14 +20,14 @@ public class HealthUI : MonoBehaviour
 
         healthbar.maxValue = pookie.CurrentHealth;
         healthbar.minValue = 0;
-        healthbar.value = pookie.CurrentHealth;
+        healthbar.value = Mathf.Clamp(pookie.CurrentHealth, healthbar.minValue, healthbar.maxValue);
 
         healthText.text = $"{healthbar.value}/{healthbar.maxValue}";
     }
 
     public void SetHealth(int currentHealth)
     {
-        healthbar.value = currentHealth;
-        healthText.text = $"{currentHealth}/{healthbar.maxValue}";
+        healthbar.value = Mathf.Clamp(currentHealth, healthbar.minValue, healthbar.maxValue);
+        healthText.text = $"{Mathf.Clamp(currentHealth, healthbar.minValue, healthbar.maxValue)}/{healthbar.maxValue}";
     }
 }
