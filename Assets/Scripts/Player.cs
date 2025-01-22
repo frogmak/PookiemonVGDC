@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
             pookiemon.gameObject.SetActive(false);
         }
 
+        if (battleStation.transform.position.x > 0)
+            battleStation.localScale = new Vector3(-1, 1, 1);
+
         currentPookiemon = team[0];
         currentPookiemon.gameObject.SetActive(true);
         healthUI.Init(currentPookiemon);
