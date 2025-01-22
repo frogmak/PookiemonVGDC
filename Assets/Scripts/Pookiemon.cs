@@ -48,7 +48,8 @@ public class Pookiemon : MonoBehaviour
 
 
     public string pookiemonName = "";
-    public Sprite sprite; 
+    public Sprite sprite;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] StatMap baseStats;
     StatMap stats = new StatMap();
     StatMap statChanges = new StatMap();
@@ -112,8 +113,8 @@ public class Pookiemon : MonoBehaviour
 
     public void Init()
     {
-        
-        foreach(Stats s in baseStats.Keys)
+        spriteRenderer.sprite = sprite;
+        foreach (Stats s in baseStats.Keys)
         {
             stats[s] = LEVEL * ((baseStats[s] / 50) + 5);
         }

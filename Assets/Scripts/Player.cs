@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private static float battleStationScaleFactor = .25f;
+
     [Header("Team SetUp")]
     public string playerName = "Team _";
     [SerializeField] private List<GameObject> teamGOs;
@@ -38,6 +40,8 @@ public class Player : MonoBehaviour
 
         if (battleStation.transform.position.x > 0)
             battleStation.localScale = new Vector3(-1, 1, 1);
+        
+        battleStation.localScale *= battleStationScaleFactor;
 
         currentPookiemon = team[0];
         currentPookiemon.gameObject.SetActive(true);

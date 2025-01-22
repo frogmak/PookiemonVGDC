@@ -2923,11 +2923,11 @@ MonoBehaviour:
   playerName: Team Violet
   teamGOs:
   - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
-  - {fileID: 5473840459651692684, guid: aad5f10b650163a4d8264455eb412b35, type: 3}
-  - {fileID: 5473840459651692684, guid: ec0df911d1e3fc14f8351f7882d81eb9, type: 3}
-  - {fileID: 5473840459651692684, guid: c2d0c9ef34485cb40b15e65f18f19777, type: 3}
-  - {fileID: 5473840459651692684, guid: a3a9404988617e547abab4a5c193c1f4, type: 3}
-  - {fileID: 5473840459651692684, guid: ac38c47e334f4464899d001e259c43b4, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
   battleStation: {fileID: 2048202138}
   healthUI: {fileID: 1243288749}
 --- !u!1001 &1243288747
@@ -3931,11 +3931,11 @@ MonoBehaviour:
   playerName: Team Scarlet
   teamGOs:
   - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
-  - {fileID: 5473840459651692684, guid: aad5f10b650163a4d8264455eb412b35, type: 3}
-  - {fileID: 5473840459651692684, guid: ec0df911d1e3fc14f8351f7882d81eb9, type: 3}
-  - {fileID: 5473840459651692684, guid: c2d0c9ef34485cb40b15e65f18f19777, type: 3}
-  - {fileID: 5473840459651692684, guid: a3a9404988617e547abab4a5c193c1f4, type: 3}
-  - {fileID: 5473840459651692684, guid: ac38c47e334f4464899d001e259c43b4, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+  - {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
   battleStation: {fileID: 231897376167931211}
   healthUI: {fileID: 1405846838136842422}
 --- !u!4 &1715940428
