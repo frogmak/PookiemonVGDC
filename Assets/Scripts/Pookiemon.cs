@@ -158,6 +158,7 @@ public class Pookiemon : MonoBehaviour
         //STAB
         if(attack.type == type1 || attack.type == type2) { multiplier *= 1.5f; }
         int damage = (int)(multiplier * (2*LEVEL/5 +2) * attack.POWER * GetStat(Stats.ATTACK) / attacker.GetStat(Stats.DEFENSE));
+        Debug.Log("Damage: " + damage);
         int healthLost = Mathf.Clamp(damage, currentHealth, damage);
         currentHealth -= damage;
         return healthLost;
@@ -172,6 +173,7 @@ public class Pookiemon : MonoBehaviour
         //STAB
         if (attack.type == type1 || attack.type == type2) { multiplier *= 1.5f; }
         int damage = (int)(multiplier * (2 * LEVEL / 5 + 2) * attack.POWER * GetStat(Stats.SPATTACK) / attacker.GetStat(Stats.SPDEFENSE));
+        Debug.Log("Damage: " + damage);
         int healthLost = Mathf.Clamp(damage, currentHealth, damage);
         currentHealth -= damage;
         return healthLost;

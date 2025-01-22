@@ -11,6 +11,7 @@ public class BattleAction : IComparable<BattleAction>
     protected Player activePlayer;
     protected Player opposingPlayer;
     protected string narrationLine;
+    public string NarrationLine { get { return narrationLine; } }
 
     public virtual void SetAction(Player _active, Player _target)
     {

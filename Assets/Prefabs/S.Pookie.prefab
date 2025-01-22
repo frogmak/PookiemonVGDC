@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d8278da15d42c41afc2138b7c76924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pookiemonName: 
+  pookiemonName: S.Pookie
   sprite: {fileID: 0}
   baseStats:
     m_keys: 000000000100000002000000030000000400000005000000

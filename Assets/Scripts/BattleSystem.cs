@@ -67,12 +67,22 @@ public class BattleSystem : MonoBehaviour
     // sort the move order queue and determine outcomes (calculate things that need to be caclulated) 
     private void SetUpBattle()
     {
-
+        List<BattleAction> actions = new List<BattleAction>();
+        actions.Add(player1.currentMove); actions.Add(player2.currentMove);
+        actions.Sort();
+        StartCoroutine(BeginBattle(actions));
     }
 
-    private void BeginBattle()
+    private IEnumerator BeginBattle(List<BattleAction> actions)
     {
-        // play things out here in elaborate coroutines
+        actions[0].ApplyAction();
+        playerHUD.ShowNarration(actions[0].NarrationLine, true);
+        yield return new WaitForSeconds(setUpBattleTime);
+        actions[1].ApplyAction();
+        playerHUD.ShowNarration(actions[1].NarrationLine);
+        yield return new WaitForSeconds(setUpBattleTime);
+        NextPhase();
+        yield return null;
     }
 
     private void NextPhase()

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private HealthUI healthUI;
+    public HealthUI HealthUi {  get { return healthUI; } }
 
     public BattleAction currentMove;
 
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         }
 
         currentPookiemon = team[0];
+        currentPookiemon.gameObject.SetActive(true);
         healthUI.Init(currentPookiemon);
     }
 

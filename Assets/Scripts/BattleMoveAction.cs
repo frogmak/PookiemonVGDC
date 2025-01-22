@@ -29,6 +29,7 @@ public class BattleMoveAction : BattleAction
         if (isHit)
         {
             string extra = move.UseMove(opposingPlayer.Pookiemon);
+            opposingPlayer.HealthUi.SetHealth(opposingPlayer.Pookiemon.CurrentHealth);
             narrationLine = $"{activePlayer.Pookiemon.pookiemonName} used {move.moveName} on {opposingPlayer.Pookiemon.pookiemonName}. " + extra;
             
         }
