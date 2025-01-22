@@ -8,7 +8,7 @@ public class BattleSwitchAction : BattleAction
     public virtual void SetAction(Player _active, Player _target, Pookiemon _switchin)
     {
         activePlayer = _active;
-        targetPlayer = _target;
+        opposingPlayer = _target;
         switchin = _switchin;
     }
     public override void ApplyAction()

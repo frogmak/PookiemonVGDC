@@ -18,7 +18,7 @@ public class Attack : Move
 
     public int POWER { get { return power; } }
 
-    public override void UseMove(Pookiemon target)
+    public override string UseMove(Pookiemon target)
     {
         base.UseMove(target);
 
@@ -32,12 +32,12 @@ public class Attack : Move
         {
             damageDealt = target.TakeSpecialDamage(user, this);
         }
-        ExtraEffects(target, damageDealt);
+        return ExtraEffects(target, damageDealt);
     }
 
-    //Override this method!
-    protected virtual void ExtraEffects(Pookiemon target, int damageDealt)
+    //Override this method! Return any additional text to append.
+    public virtual string ExtraEffects(Pookiemon target, int damageDealt)
     {
-
+        return "";
     }
 }
