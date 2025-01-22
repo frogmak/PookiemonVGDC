@@ -1,24 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 // just a base class
-public class BattleAction
+public class BattleAction : IComparable<BattleAction>
 {
     protected Player activePlayer;
-    protected Player targetPlayer;
+    protected Player opposingPlayer;
     protected string narrationLine;
 
     public virtual void SetAction(Player _active, Player _target)
     {
         activePlayer = _active;
-        targetPlayer = _target;
+        opposingPlayer = _target;
     }
 
     public virtual void ApplyAction()
     {
-        Debug.Log($"Override this. {activePlayer.playerName} did something to {targetPlayer.playerName}.");
+        Debug.Log($"Override this. {activePlayer.playerName} did something to {opposingPlayer.playerName}.");
+    }
+
+    public int CompareTo(BattleAction other)
+    {
+        if (this.GetType() == typeof(BattleSwitchAction))
+        {
+            return -1;
+        }
+
+        else if (other.GetType() == typeof(BattleSwitchAction))
+        {
+            return 1;
+        }
+
+        else
+        {
+            if(((BattleMoveAction)this).MOVE.priority > ((BattleMoveAction)other).MOVE.priority)
+            {
+                return -1;
+            }
+            else if(((BattleMoveAction)this).MOVE.priority < ((BattleMoveAction)other).MOVE.priority)
+            {
+                return 1;
+            }
+            else
+            {
+                return activePlayer.Pookiemon.GetStat(Stats.SPEED) >= opposingPlayer.Pookiemon.GetStat(Stats.SPEED) ? -1 : -1;
+            }
+        }
     }
 }
 /*

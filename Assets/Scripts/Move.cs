@@ -19,9 +19,10 @@ public class Move : MonoBehaviour
     }
 
     // applys the move
-    public virtual void UseMove(Pookiemon target) 
+    public virtual string UseMove(Pookiemon target) 
     {
         currentPP--;
+        return "";
     }
 
     // checks if the move is a hit or miss

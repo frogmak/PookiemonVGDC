@@ -8,11 +8,12 @@ public class BattleMoveAction : BattleAction
     private bool isHit;
     public bool IsHit { get { return isHit; } }
     private Move move;
+    public Move MOVE { get { return move; } }
 
     public virtual void SetAction(Player _active, Player _target, Move _move, bool _isHit)
     {
         activePlayer = _active;
-        targetPlayer = _target;
+        opposingPlayer = _target;
         move = _move;
         isHit = _isHit;
     }
@@ -27,8 +28,9 @@ public class BattleMoveAction : BattleAction
 
         if (isHit)
         {
-            narrationLine = $"{activePlayer.Pookiemon.pookiemonName} used {move.moveName} on {targetPlayer.Pookiemon.pookiemonName}.";
-            move.UseMove(targetPlayer.Pookiemon);
+            string extra = move.UseMove(opposingPlayer.Pookiemon);
+            narrationLine = $"{activePlayer.Pookiemon.pookiemonName} used {move.moveName} on {opposingPlayer.Pookiemon.pookiemonName}. " + extra;
+            
         }
         else
         {
