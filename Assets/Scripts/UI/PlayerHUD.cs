@@ -1,11 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerHUD : MonoBehaviour
 {
+    public static PlayerHUD instance;
+
     [Header("Narration")]
     [SerializeField] private GameObject narrationUI;
     [SerializeField] private TMP_Text narrationText;
@@ -16,6 +16,7 @@ public class PlayerHUD : MonoBehaviour
 
     [Header("Fight")]
     [SerializeField] private GameObject fightPromptUI;
+    [SerializeField] private List<MoveButton> moveButtons;
     [SerializeField] private TMP_Text pp;
     [SerializeField] private TMP_Text type;
 
@@ -25,6 +26,11 @@ public class PlayerHUD : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+            Destroy(gameObject);
+        else
+            instance = this;
+
         HideAll();
     }
 
@@ -61,7 +67,19 @@ public class PlayerHUD : MonoBehaviour
         HideAll();
         fightPromptUI.SetActive(true);
 
-        // initalize the move data somehow
+        for (int i = 0; i < moveButtons.Count; ++i)
+        {
+            moveButtons[i].Init(pookie.Moves[i]);
+        }
+
+        pp.text = "";
+        type.text = "";
+    }
+
+    public void SetMovePPandType(int _pp, string _type)
+    {
+        pp.text = $"PP: {_pp}";
+        type.text = _type.ToUpper();
     }
 
     public void ShowPookiemonSelect(List<Pookiemon> pookies)

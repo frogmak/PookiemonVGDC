@@ -56,6 +56,7 @@ public class Pookiemon : MonoBehaviour
     [SerializeField] Types type1;
     [SerializeField] Types type2;
     [SerializeField] List<Move> moves;
+    public List<Move> Moves { get { return moves; } }
     public float accuracyStage = 0;
     public bool IsDead { get { return currentHealth <= 0; } }
     private int currentHealth;

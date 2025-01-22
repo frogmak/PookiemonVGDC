@@ -28,13 +28,9 @@ public class BattleSystem : MonoBehaviour
     private void Awake()
     {
         if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
+            Destroy(gameObject);
         else
-        {
             instance = this;
-        }
     }
 
     private void Start()
@@ -170,6 +166,9 @@ public class BattleSystem : MonoBehaviour
 
     public void OnMoveSelected(Move move)
     {
+        if (currentState != BattleState.P1TURN && currentState != BattleState.P2TURN)
+            return;
+
         BattleMoveAction action = new BattleMoveAction();
         bool hit = move.AttemptMove();
         action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, move, hit);
@@ -180,6 +179,9 @@ public class BattleSystem : MonoBehaviour
     //Called by the switch in button
     public void OnPookiemonSwitched(Pookiemon p)
     {
+        if (currentState != BattleState.P1TURN && currentState != BattleState.P2TURN)
+            return;
+
         BattleSwitchAction action = new BattleSwitchAction();
         action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, p);
         currentPlayer.currentMove = action;

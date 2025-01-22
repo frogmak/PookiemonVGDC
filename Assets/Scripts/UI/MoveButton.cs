@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class MoveButton : MonoBehaviour
+public class MoveButton : MonoBehaviour, IPointerEnterHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    private Move move;
+
+    [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private Button button;
+
+    private void Awake()
     {
-        
+        button.onClick.AddListener(SelectMove);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Init(Move _move)
     {
-        
+        move = _move;
+        buttonText.text = move.moveName;
+    }
+
+    private void SelectMove()
+    {
+        BattleSystem.instance.OnMoveSelected(move);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        PlayerHUD.instance.SetMovePPandType(move.movePP, move.type.ToString());
     }
 }
