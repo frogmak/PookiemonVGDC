@@ -214,106 +214,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1466874351
-GameObject:
+--- !u!1001 &627256437378930683
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1466874353}
-  - component: {fileID: 1466874352}
-  - component: {fileID: 1466874354}
-  - component: {fileID: 1466874355}
-  m_Layer: 0
-  m_Name: S.Pookie
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1466874352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466874351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5d8278da15d42c41afc2138b7c76924, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseStats:
-    m_keys: 000000000100000002000000030000000400000005000000
-    m_values: 640000006400000064000000640000006400000064000000
-  type1: 13
-  type2: 3
-  moves:
-  - {fileID: 1466874354}
-  - {fileID: 1466874355}
-  accuracyStage: 0
---- !u!4 &1466874353
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466874351}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3231211, y: -0.18623962, z: -0.0034461352}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1466874354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466874351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e2ca4c44441bc4ca5cbaa581756fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Tackle
-  accuracy: 100
-  user: {fileID: 1466874352}
-  type: 0
-  movePP: 50
-  priority: 0
-  damageType: 0
-  power: 40
-  critChance: 0
---- !u!114 &1466874355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466874351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e2ca4c44441bc4ca5cbaa581756fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Dark Pulse
-  accuracy: 100
-  user: {fileID: 1466874352}
-  type: 15
-  movePP: 50
-  priority: 0
-  damageType: 1
-  power: 80
-  critChance: 0
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5473840459651692684, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_Name
+      value: S.Pookie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3231211
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.18623962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0034461352
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881426803419197635, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c2d87d62567ba94b8dd960a6a7b3ed3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1466874353}
+  - {fileID: 627256437378930683}

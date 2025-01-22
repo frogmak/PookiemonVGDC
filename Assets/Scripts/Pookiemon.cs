@@ -111,16 +111,17 @@ public class Pookiemon : MonoBehaviour
 
     private void Awake()
     {
-        ResetChanges();
+        
         foreach(Stats s in baseStats.Keys)
         {
             stats[s] = LEVEL * ((baseStats[s] / 50) + 5);
         }
-        currentHealth = baseStats[Stats.HP];
+        currentHealth = stats[Stats.HP];
         for(int i = 0; i < 6; i++)
         {
             statChanges.Add(i, 0);
         }
+        ResetChanges();
     }
 
     public void OnSwitch()

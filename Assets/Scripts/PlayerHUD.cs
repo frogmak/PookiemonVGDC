@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerHUD : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class PlayerHUD : MonoBehaviour
     private void Awake()
     {
         HideAll();
+    }
+
+    public void Back()
+    {
+        ShowActionPrompt($"What will {BattleSystem.instance.CurrentPlayer.Pookiemon.pookiemonName.ToUpper()} do?");
     }
 
     private void HideAll()
@@ -60,11 +66,12 @@ public class PlayerHUD : MonoBehaviour
 
     public void ShowPookiemonSelect(List<Pookiemon> pookies)
     {
-        for (int i = 0; i < selectionButtons.Count; ++i)
+        for (int i = 0; i < selectionButtons.Count; i++)
         {
             selectionButtons[i].Init(pookies[i]);
         }
-
+        HideAll();
+        pookiemonSelectUI.SetActive(true);
         // do more stuff to init the selection buttons
     }
 }

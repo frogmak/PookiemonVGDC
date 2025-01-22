@@ -12,6 +12,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Player player1;
     [SerializeField] Player player2;
     private Player currentPlayer;
+    public Player CurrentPlayer { get { return currentPlayer; } }
 
     [Header("UI")]
     [SerializeField] private PlayerHUD playerHUD;
@@ -22,7 +23,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private float startBattleTime = 2f;
 
     private BattleState currentState;
-    private Queue<string> battleNarration;
+    private Queue<BattleAction> battleNarration;
 
     private void Awake()
     {
@@ -150,7 +151,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnFight()
     {
-        if (currentState != BattleState.P1TURN || currentState != BattleState.P2TURN)
+        if (currentState != BattleState.P1TURN && currentState != BattleState.P2TURN)
             return;
 
         playerHUD.ShowFightPrompt(currentPlayer.Pookiemon);
@@ -158,7 +159,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnPookiemonSelect()
     {
-        if (currentState != BattleState.P1TURN || currentState != BattleState.P2TURN)
+        if (currentState != BattleState.P1TURN && currentState != BattleState.P2TURN)
             return;
 
         playerHUD.ShowPookiemonSelect(currentPlayer.Team);

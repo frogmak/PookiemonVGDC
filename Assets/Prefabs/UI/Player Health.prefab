@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 3768622311594441619}
   - component: {fileID: 1092078773837273609}
   - component: {fileID: 540038621868742428}
+  - component: {fileID: 310913503760491653}
   m_Layer: 0
   m_Name: Player Health
   m_TagString: Untagged
@@ -474,6 +475,22 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &310913503760491653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2872843708716506834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2737d20e4110ba4a894338d2c831f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 104722374273487888}
+  levelText: {fileID: 2448540126502760055}
+  healthbar: {fileID: 6119628262393272352}
+  healthText: {fileID: 4773598069999905754}
 --- !u!1 &3155432237943925756
 GameObject:
   m_ObjectHideFlags: 0

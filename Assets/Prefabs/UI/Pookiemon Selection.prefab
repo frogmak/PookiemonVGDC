@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 6453424981432536907}
   - component: {fileID: 4512879129075055166}
   - component: {fileID: 8807821753540698723}
+  - component: {fileID: 4904169805340198243}
   m_Layer: 0
   m_Name: Pookiemon Selection
   m_TagString: Untagged
@@ -573,6 +574,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4904169805340198243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3944405911443558542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6980b5227189a3c41b583504c1984ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 2598896783834635137}
+  levelText: {fileID: 1886238557395993271}
+  healthbar: {fileID: 5848035136904608682}
+  healthText: {fileID: 1092695693514824930}
+  image: {fileID: 1183318260475610361}
+  myButton: {fileID: 8807821753540698723}
 --- !u!1 &4504282829585128662
 GameObject:
   m_ObjectHideFlags: 0
