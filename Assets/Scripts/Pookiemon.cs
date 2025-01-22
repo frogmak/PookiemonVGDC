@@ -58,12 +58,12 @@ public class Pookiemon : MonoBehaviour
     [SerializeField] Types type2;
     [SerializeField] List<Move> moves;
     public List<Move> Moves { get { return moves; } }
-    public float accuracyStage = 0;
+    [HideInInspector] public float accuracyStage = 0;
     public bool IsDead { get { return currentHealth <= 0; } }
     private int currentHealth;
     public int CurrentHealth { get { return currentHealth; } }
 
-    public bool cantMove = false;
+    [HideInInspector] public bool cantMove = false;
 
     public static float GetMultiplier(Types attackType, Types defend1, Types defender2)
     {
