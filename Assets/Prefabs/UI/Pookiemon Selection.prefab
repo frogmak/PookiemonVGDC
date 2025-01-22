@@ -591,6 +591,8 @@ MonoBehaviour:
   healthbar: {fileID: 5848035136904608682}
   healthText: {fileID: 7662043532373960571}
   image: {fileID: 1183318260475610361}
+  statusEffect: {fileID: 4504282829585128662}
+  statusText: {fileID: 8692788933833903139}
   myButton: {fileID: 8807821753540698723}
 --- !u!1 &4504282829585128662
 GameObject:
@@ -604,7 +606,7 @@ GameObject:
   - component: {fileID: 954937610023703904}
   - component: {fileID: 7549607155741262779}
   m_Layer: 0
-  m_Name: Faint Status
+  m_Name: Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

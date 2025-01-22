@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +11,8 @@ public class PookiemonSelectionButton : MonoBehaviour
     [SerializeField] private Slider healthbar;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private Image image;
+    [SerializeField] private GameObject statusEffect;
+    [SerializeField] private TMP_Text statusText;
 
     [SerializeField] private Button myButton;
     private Pookiemon pookiemon;
@@ -35,10 +35,19 @@ public class PookiemonSelectionButton : MonoBehaviour
         healthText.text = $"{healthbar.value}/{healthbar.maxValue}";
 
         image.sprite = pookie.sprite;
+        statusEffect.SetActive(false);
+        myButton.interactable = true;
+
+        if (pookiemon.IsDead)
+        {
+            myButton.interactable = false;
+            statusEffect.SetActive(true);
+            statusText.text = "FAINT";
+        }
     }
 
     private void OnClick()
     {
-        // choose the pookiemon here
+        BattleSystem.instance.OnPookiemonSwitched(pookiemon);
     }
 }

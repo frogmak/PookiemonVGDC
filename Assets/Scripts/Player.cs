@@ -41,12 +41,40 @@ public class Player : MonoBehaviour
         healthUI.Init(currentPookiemon);
     }
 
-    // switch pookie method here
-
-    public void SwitchPookie(Pookiemon pookiemon)
+    public void SwitchPookie(Pookiemon pookiemon = null)
     {
         currentPookiemon.gameObject.SetActive(false);
-        currentPookiemon = pookiemon;
+
+        // if no pookiemon is provided, then find a random
+        if (pookiemon == null)
+        {
+            List<Pookiemon> livePookiemon = GetLivePookiemon();
+            if (livePookiemon.Count > 1)
+            {
+                Pookiemon newPookiemon = currentPookiemon;
+                while (newPookiemon == currentPookiemon)
+                {
+                    newPookiemon = livePookiemon[Random.Range(0, livePookiemon.Count)];
+                }
+                currentPookiemon = newPookiemon;
+            }
+        }
+        else
+        {
+            currentPookiemon = pookiemon;
+        }
+
         currentPookiemon.gameObject.SetActive(true);
+    }
+
+    private List<Pookiemon> GetLivePookiemon()
+    {
+        List<Pookiemon> livePookiemon = new List<Pookiemon>();
+        foreach (Pookiemon pookie in team)
+        {
+            if (!pookie.IsDead)
+                livePookiemon.Add(pookie);
+        }
+        return livePookiemon;
     }
 }

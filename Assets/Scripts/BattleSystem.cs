@@ -58,14 +58,9 @@ public class BattleSystem : MonoBehaviour
         NextPhase();
     }
 
-    private void Player1Turn()
+    private void PlayerTurn()
     {
-        playerHUD.ShowActionPrompt($"What will {player1.Pookiemon.pookiemonName.ToUpper()} do?");
-    }
-
-    private void Player2Turn()
-    {
-        playerHUD.ShowActionPrompt($"What will {player1.Pookiemon.pookiemonName.ToUpper()} do?");
+        playerHUD.ShowActionPrompt($"What will {currentPlayer.Pookiemon.pookiemonName.ToUpper()} do?");
     }
 
     // sort the move order queue and determine outcomes (calculate things that need to be caclulated) 
@@ -98,12 +93,12 @@ public class BattleSystem : MonoBehaviour
             case BattleState.START:
                 currentState = BattleState.P1TURN;
                 currentPlayer = player1;
-                Player1Turn();
+                PlayerTurn();
                 break;
             case BattleState.P1TURN:
                 currentState = BattleState.P2TURN;
                 currentPlayer = player2;
-                Player2Turn();
+                PlayerTurn();
                 break;
             case BattleState.P2TURN:
                 currentPlayer = null;
@@ -137,7 +132,7 @@ public class BattleSystem : MonoBehaviour
             case BattleState.P2SWITCH:
                 currentState = BattleState.P1TURN;
                 currentPlayer = player1;
-                Player1Turn();
+                PlayerTurn();
                 break;
         }
     }
