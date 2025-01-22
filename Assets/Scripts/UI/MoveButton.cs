@@ -28,6 +28,6 @@ public class MoveButton : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        PlayerHUD.instance.SetMovePPandType(move.movePP, move.type.ToString());
+        HUD.instance.SetMovePPandType(move.movePP, move.type.ToString());
     }
 }
