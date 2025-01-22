@@ -86,7 +86,7 @@ public class Pookiemon : MonoBehaviour
         {
             num += 1;
         }
-        else
+        else if (statChanges[stat] < 0)
         {
             denom += 1;
         }
@@ -110,7 +110,7 @@ public class Pookiemon : MonoBehaviour
     }
 
 
-    private void Awake()
+    public void Init()
     {
         
         foreach(Stats s in baseStats.Keys)
@@ -172,7 +172,7 @@ public class Pookiemon : MonoBehaviour
         if (RollCrit(attack)) { multiplier *= 1.5f; }
         //STAB
         if (attack.type == type1 || attack.type == type2) { multiplier *= 1.5f; }
-        int damage = (int)(multiplier * (2 * LEVEL / 5 + 2) * attack.POWER * GetStat(Stats.SPATTACK) / attacker.GetStat(Stats.SPDEFENSE));
+        int damage = (int)(multiplier * (2 * LEVEL / 5 + 2) * attack.POWER * GetStat(Stats.SPATTACK) / attacker.GetStat(Stats.SPDEFENSE) / 50);
         Debug.Log("Damage: " + damage);
         int healthLost = Mathf.Clamp(damage, currentHealth, damage);
         currentHealth -= damage;

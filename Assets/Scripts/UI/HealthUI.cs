@@ -18,7 +18,7 @@ public class HealthUI : MonoBehaviour
         nameText.text = pookie.pookiemonName;
         levelText.text = $"{levelLabel}{Pookiemon.LEVEL}";
 
-        healthbar.maxValue = pookie.CurrentHealth;
+        healthbar.maxValue = pookie.GetStat(Stats.HP);
         healthbar.minValue = 0;
         healthbar.value = pookie.CurrentHealth;
 

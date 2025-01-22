@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         foreach (GameObject pookie in teamGOs)
         {
             Pookiemon pookiemon = Instantiate(pookie, battleStation).GetComponent<Pookiemon>();
+            pookiemon.Init();
             team.Add(pookiemon);
             pookiemon.gameObject.SetActive(false);
         }

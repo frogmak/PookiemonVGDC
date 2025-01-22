@@ -589,7 +589,7 @@ MonoBehaviour:
   nameText: {fileID: 2598896783834635137}
   levelText: {fileID: 1886238557395993271}
   healthbar: {fileID: 5848035136904608682}
-  healthText: {fileID: 1092695693514824930}
+  healthText: {fileID: 7662043532373960571}
   image: {fileID: 1183318260475610361}
   myButton: {fileID: 8807821753540698723}
 --- !u!1 &4504282829585128662
