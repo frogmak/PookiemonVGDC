@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // for when a pookiemon uses a move (both hits and misses)
-public class BattleMove : BattleAction
+public class BattleMoveAction : BattleAction
 {
     private bool isHit;
     public bool IsHit { get { return isHit; } }

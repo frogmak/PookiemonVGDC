@@ -170,7 +170,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnMoveSelected(Move move)
     {
-        BattleMove action = new BattleMove();
+        BattleMoveAction action = new BattleMoveAction();
         bool hit = move.AttemptMove();
         action.SetAction(currentPlayer, currentPlayer == player1 ? player2 : player1, move, hit);
         currentPlayer.currentMove = action;
